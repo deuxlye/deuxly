@@ -1,0 +1,36 @@
+{{ $type := "Article" }}
+{{ if eq .Kind "home" }}{{ $type = "WebSite" }}{{ end }}
+{{ $baseURL := .Site.BaseURL }}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{ $type }}",
+
+  {{ if eq $type "Article" }}
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ .Permalink }}" 
+  },
+  "headline": {{ .Title | jsonify }},
+  "description": {{ with .Description }}{{ . | jsonify }}{{ else }}{{ .Summary | plainify | jsonify }}{{ end }},
+  "image": [
+    "{{ with .Params.featured_image }}{{ . | absURL }}{{ end }}" 
+  ],
+  "datePublished": "{{ .Date.Format "2006-01-02T15:04:05-07:00" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" }}",
+  "author": {
+    "@type": "Organization",
+    "name": "Deuxly"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Deuxly",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ with .Site.Params.logo_url }}{{ . | absURL }}{{ end }}"
+    }
+  }
+  {{ end }}
+}
+</script>
