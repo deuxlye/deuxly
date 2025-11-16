@@ -4,7 +4,8 @@
     {{ partial "head.html" . }}
     {{ if eq .Kind "page" }}
         {{ partial "schema_article.html" . }}
-    {{ end }}
+    {{ if not .IsProduction }}
+    <meta name="robots" content="noindex, nofollow">
 </head>
 <div id="search-overlay" class="fixed inset-0 bg-white dark:bg-gray-900 bg-opacity-95 dark:bg-opacity-95 z-[9999] hidden">
     <div class="max-w-4xl mx-auto p-6 md:p-12">
