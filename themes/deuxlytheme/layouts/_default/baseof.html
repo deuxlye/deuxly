@@ -2,7 +2,9 @@
 <html lang="{{ .Lang }}">
 <head>
     {{ partial "head.html" . }}
-    {{ partial "schema_article.html" . }}
+    {{ if eq .Kind "page" }}
+        {{ partial "schema_article.html" . }}
+    {{ end }}
 </head>
 <div id="search-overlay" class="fixed inset-0 bg-white dark:bg-gray-900 bg-opacity-95 dark:bg-opacity-95 z-[9999] hidden">
     <div class="max-w-4xl mx-auto p-6 md:p-12">
