@@ -9,7 +9,7 @@ author: "Deuxly"
 description: "Buat kamu yang ngeblog pakai Blogger (Blogspot), pasti udah sering banget kan lihat kode ?m=1 nongol di belakang URL postinganmu?"
 ---
 
-Buat kamu yang _ngeblog_ pakai **Blogger (Blogspot)**, pasti udah sering banget kan lihat kode **`?m=1`** nongol di belakang URL postinganmu?
+Buat kamu yang _ngeblog_ pakai **Blogger (Blogspot)**, pasti udah sering banget kan lihat kode **`?m=1`** nongol di belakang URL postinganmu? 
 
 Nah, meskipun kodenya kecil, ternyata dia bisa jadi **biang kerok** yang bikin **SEO blogmu kurang oke**, mendingan kita _hilangin_ aja.
 
