@@ -32,7 +32,8 @@
         </div>
         
         {{ with $currentPage.Params.image }}
-            <img class="w-full h-auto rounded-lg shadow-lg mb-6" src="{{ . | relURL }}" alt="{{ $currentPage.Title }}">
+            <img class="w-full h-auto rounded-lg shadow-lg mb-6" src="{{ . | relURL }}" alt="{{ $currentPage.Title }}"
+        loading="lazy">
         {{ end }}
 
         <div class="article-content prose dark:prose-invert max-w-none text-gray-800 dark:text-gray-200 text-lg leading-relaxed">

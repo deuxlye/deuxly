@@ -2,7 +2,7 @@
 <a href="{{ $post.Permalink }}" class="block bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
     
     {{ with $post.Params.image }}
-        <img class="w-full h-40 object-cover" src="{{ . | relURL }}" alt="{{ $post.Title }}">
+        <img class="w-full h-40 object-cover" src="{{ . | relURL }}" alt="{{ $post.Title }}" loading="lazy">
     {{ end }}
 
     <div class="p-4">
