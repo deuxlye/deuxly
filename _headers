@@ -1,0 +1,19 @@
+/*
+  Strict-Transport-Security Header (HSTS)
+  Wajib untuk HTTPS (Meningkatkan skor keamanan)
+  -----------------------------------------
+  
+  X-Frame-Options
+  Mencegah clickjacking
+  
+  X-Content-Type-Options
+  Mencegah MIME-type sniffing
+  
+  Referrer-Policy
+  Mengontrol informasi referrer yang dikirim
+*/
+/*
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
