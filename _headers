@@ -1,19 +1,7 @@
+# Aturan ini berlaku untuk semua file di root (/*)
 /*
-  Strict-Transport-Security Header (HSTS)
-  Wajib untuk HTTPS (Meningkatkan skor keamanan)
-  -----------------------------------------
-  
-  X-Frame-Options
-  Mencegah clickjacking
-  
-  X-Content-Type-Options
-  Mencegah MIME-type sniffing
-  
-  Referrer-Policy
-  Mengontrol informasi referrer yang dikirim
-*/
-/*
-  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: DENY
-  Referrer-Policy: strict-origin-when-cross-origin
+  X-Robots-Tag: noindex
+
+# Kecualikan aturan noindex di atas HANYA pada branch production
+# Ganti 'main' dengan nama branch production Anda (misalnya 'master')
+  X-Robots-Tag: noindex, follow; branch=main, master;
