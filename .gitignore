@@ -1,0 +1,6 @@
+# Folder hasil build Hugo
+/public/
+
+# File cache atau dependencies yang tidak perlu dilacak
+/.DS_Store
+/resources/
