@@ -1,0 +1,24 @@
+{{ $post := . }}
+<a href="{{ $post.Permalink }}" class="block bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
+    
+    {{ with $post.Params.image }}
+        <img class="w-full h-40 object-cover" src="{{ . | relURL }}" alt="{{ $post.Title }}">
+    {{ end }}
+
+    <div class="p-4">
+        
+        <div class="flex space-x-2 mb-2">
+            {{ with index $post.Params.tags 0 }}
+                <span class="text-sm font-semibold 
+                             text-[#1F2937] dark:text-gray-100 
+                             bg-[#E0F2FE] dark:bg-blue-900 
+                             mb-2 mr-2 rounded-md whitespace-nowrap" 
+                      style="padding-top: 2px; padding-bottom: 2px; padding-left: 8px; padding-right: 8px; margin-bottom: 8px; margin-right: 8px;">
+                    {{ . }}
+                </span>
+            {{ end }}
+        </div>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2 leading-snug">{{ $post.Title }}</h3>
+        <p class="text-sm text-gray-500 dark:text-gray-400">{{ $post.Date.Format "January 2, 2006" }}</p>
+    </div>
+</a>

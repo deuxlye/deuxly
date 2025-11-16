@@ -1,0 +1,82 @@
+{{ define "main" }}
+{{ $allPosts := where .Site.RegularPages "Type" "post" }}
+
+{{ $codingPosts := where $allPosts ".Params.tags" "intersect" (slice "Coding") }}
+{{ if len $codingPosts }}
+<div class="mb-12">
+    <div class="flex justify-between items-center mb-6 border-b border-gray-300 dark:border-gray-700 pb-2">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Coding</h2>
+        <a href="{{ "/tags/coding/" | relURL }}" class="text-sm font-semibold text-blue-600 dark:text-blue-400 hover:underline">Lebih banyak</a>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {{ range first 4 $codingPosts }}
+            {{ partial "article-card.html" . }}
+        {{ end }}
+    </div>
+</div>
+{{ end }}
+
+{{ $bloggerPosts := where $allPosts ".Params.tags" "intersect" (slice "Blogger") }}
+{{ if len $bloggerPosts }}
+<div class="mb-12">
+    <div class="flex justify-between items-center mb-6 border-b border-gray-300 dark:border-gray-700 pb-2">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Blogger</h2>
+        <a href="{{ "/tags/blogger/" | relURL }}" class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">Lebih Banyak</a>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {{ range first 4 $bloggerPosts }}
+            {{ partial "article-card.html" . }}
+        {{ end }}
+    </div>
+</div>
+{{ end }}
+
+{{ $internetPosts := where $allPosts ".Params.tags" "intersect" (slice "Internet") }}
+{{ if len $internetPosts }}
+<div class="mb-12">
+    <div class="flex justify-between items-center mb-6 border-b border-gray-300 dark:border-gray-700 pb-2">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Internet</h2>
+        <a href="{{ "/tags/internet/" | relURL }}" class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">Lebih Banyak</a>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {{ range first 4 $internetPosts }}
+            {{ partial "article-card.html" . }}
+        {{ end }}
+    </div>
+</div>
+{{ end }}
+
+{{ $lifestylePosts := where $allPosts ".Params.tags" "intersect" (slice "Lifestyle") }}
+{{ if len $lifestylePosts }}
+<div class="mb-12">
+    <div class="flex justify-between items-center mb-6 border-b border-gray-300 dark:border-gray-700 pb-2">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Lifestyle</h2>
+        <a href="{{ "/tags/lifestyle/" | relURL }}" class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">Lebih Banyak</a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {{ range first 4 $lifestylePosts }}
+            {{ partial "article-card.html" . }}
+        {{ end }}
+    </div>
+</div>
+{{ end }}
+
+{{ $informasiPosts := where $allPosts ".Params.tags" "intersect" (slice "Informasi") }}
+{{ if len $informasiPosts }}
+<div class="mb-12">
+    <div class="flex justify-between items-center mb-6 border-b border-gray-300 dark:border-gray-700 pb-2">
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Informasi</h2>
+        <a href="{{ "/tags/informasi/" | relURL }}" class="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline">Lebih Banyak</a>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {{ range first 4 $informasiPosts }}
+            {{ partial "article-card.html" . }}
+        {{ end }}
+    </div>
+</div>
+{{ end }}
+
+{{ end }}

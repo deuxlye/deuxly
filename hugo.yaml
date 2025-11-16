@@ -1,0 +1,46 @@
+baseURL: "https://deuxly.id/" # GANTI dengan URL deployment Anda
+languageCode: "id-ID"
+title: "Deuxly"
+theme: "deuxlytheme"
+
+# --- TAMBAHKAN BLOK INI ---
+permalinks:
+  post: '/:slug/'
+# -------------------------
+
+# Konfigurasi Taxonomi
+taxonomies:
+  tag: "tags"
+  category: "categories"
+
+# Konfigurasi Menu Navigasi (Untuk Header)
+menu:
+  main:
+    - name: "Beranda"
+      url: "/"
+      weight: 10
+    - name: "Coding"
+      url: "/tags/coding/"
+      weight: 20
+    - name: "Blogger"
+      url: "/tags/blogger/"
+      weight: 30
+    - name: "Internet"
+      url: "/tags/internet/"
+      weight: 40
+    - name: "Lifestyle"
+      url: "/tags/lifestyle/"
+      weight: 50
+    - name: "Informasi"
+      url: "/tags/informasi/"
+      weight: 60
+
+# === BLOK PARAMS UTAMA (Semua setting digabungkan di sini) ===
+params:
+  # Setting 1: FIX FINAL DisQus Shortname
+  disqusShortname: "deuxly" # GANTI dengan Shortname Anda yang benar
+  
+  # Setting 2: Menentukan folder 'post' sebagai konten utama
+  mainSections:
+    - post
+# === TIDAK ADA BLOK 'params:' LAIN DI BAWAH INI ===

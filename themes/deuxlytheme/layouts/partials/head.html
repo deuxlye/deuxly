@@ -1,0 +1,87 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ block "title" . }}{{ if .IsHome }}Deuxly - Blogging & Learning{{ else }}{{ .Title }} | Deuxly{{ end }}{{ end }}</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+    }
+</script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="{{ "/css/wp-styles.css" | relURL }}">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<style>
+    /* Latar Belakang Gelap Kustom */
+    .article-content pre[class*="language-"] {
+        background-color: #1E1E1E !important; /* Warna Deep Dark Slate/Black */
+        padding: 1.5rem !important;
+        border-radius: 0.5rem;
+        line-height: 1.5;
+    }
+
+    /* OVERRIDE WARNA PRISM UNTUK MEMASTIKAN TAMPILAN OKAIDIA */
+    /* Warna String (Harus Kuning/Emas) */
+    .token.string {
+        color: #e6db74 !important; 
+    }
+    /* Warna Keyword (Harus Pink/Magenta) */
+    .token.keyword {
+        color: #f92672 !important;
+    }
+    /* Warna Variable/Function (Harus Cyan/Biru Muda) */
+    .token.function, .token.builtin, .token.variable {
+        color: #66d9ef !important;
+    }
+    /* Warna Number/Boolean (Harus Ungu) */
+    .token.number, .token.boolean {
+        color: #ae81ff !important;
+    }
+    /* Warna Operator/Punctuation (Harus Putih/Terang) */
+    .token.punctuation, .token.operator {
+        color: #f8f8f2 !important;
+    }
+
+    /* --- STYLE HEADING MANUAL UNTUK MENGGANTIKAN PROSE --- */
+    .article-content h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
+        /* GARIS BAWAH OTOMATIS: */
+        border-bottom: 2px solid #e2e8f0; /* Garis bawah default (light gray) */
+        padding-bottom: 0.5rem; /* Memberi jarak antara teks dan garis */
+        
+    }
+
+    /* Dark Mode Override untuk h2 */
+    .dark .article-content h2 {
+        color: #f7fafc !important; 
+        /* Warna garis di Dark Mode (dark gray) */
+        border-bottom-color: #4a5568; 
+    }
+    /* ... (Style H3 lainnya) ... */
+    .article-content h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Dark Mode Override (untuk memastikan warna teks putih) */
+    .dark .article-content h2, .dark .article-content h3 {
+        color: #f7fafc !important; /* Teks putih di Dark Mode */
+        border-bottom-color: #4a5568;
+    }
+    
+</style>
+
+<script>
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+</script>

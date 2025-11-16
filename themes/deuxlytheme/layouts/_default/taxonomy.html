@@ -1,0 +1,40 @@
+{{ define "main" }}
+{{/* --- SEO CHECK: NOINDEX JIKA HALAMAN KOSONG --- */}}
+{{ if eq (len .Paginator.Pages) 0 }}
+<meta name="robots" content="noindex">
+{{ end }}
+{{/* ----------------------------------------------- */}}
+<div class="container max-w-6xl mx-auto px-4 py-8 mt-4">
+    
+    <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-8">
+        {{ if eq .Kind "term" }}
+            Tag: {{ .Title }} 
+        {{ else }}
+            Semua Tags
+        {{ end }}
+    </h1>
+    
+    {{ if eq .Kind "term" }}
+        <div class="articles-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            {{/* LOOP SIMPLIFIED: Menggunakan .Pages agar tidak ada error Paginator */}}
+            {{ range .Pages }}
+                {{ partial "article-card.html" . }}
+            {{ end }}
+        </div>
+        
+    {{ else }}
+    <ul class="space-y-4 text-xl">
+            {{ range .Data.Terms.ByCount }}
+                <li>
+                    <a href="{{ .Page.Permalink }}" class="text-blue-600 dark:text-blue-400 hover:underline">
+                        {{ .Page.Title }}
+                    </a>
+                    ({{ .Count }} artikel)
+                </li>
+            {{ end }}
+        </ul>
+        
+    {{ end }}
+</div>
+{{ end }}

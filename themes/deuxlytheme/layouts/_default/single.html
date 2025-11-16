@@ -1,0 +1,220 @@
+{{ define "main" }}
+{{ $currentPage := . }} {{/* Variabel halaman harus ada di sini */}}
+
+<div class="lg:flex lg:space-x-8">
+    
+    <div class="lg:w-2/3 bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 lg:p-8 mb-8 lg:mb-0">
+        
+        <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">{{ $currentPage.Title }}</h1>
+        
+        <div class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400 mb-6">
+            <span>By&nbsp;<a href="#" class="text-blue-600 hover:underline">{{ with $currentPage.Params.author }}{{ . }}{{ else }}deuxly{{ end }}</a></span>
+            <span>-</span>
+            
+            <span>{{ $currentPage.Date.Format "January 2, 2006" }} ~ 
+    {{/* Mulai Logic Baru: Cek Halaman Kontak, lalu hitung */}}
+    {{ $isContact := eq $currentPage.Title "Hubungi Kami" }}
+    
+    {{ if $isContact }}
+        1
+    {{ else }}
+        {{ $readTime := math.Ceil (div (mul $currentPage.WordCount 1.0) 200) }}
+        {{ if eq $readTime 0 }}
+            1
+        {{ else }}
+            {{ $readTime }}
+        {{ end }}
+    {{ end }}
+    mins read
+</span>
+
+
+        </div>
+        
+        {{ with $currentPage.Params.image }}
+            <img class="w-full h-auto rounded-lg shadow-lg mb-6" src="{{ . | relURL }}" alt="{{ $currentPage.Title }}">
+        {{ end }}
+
+        <div class="article-content prose dark:prose-invert max-w-none text-gray-800 dark:text-gray-200 text-lg leading-relaxed">
+            {{ .Content }}  </div>
+
+        <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+            <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Tags:</h4>
+            <div class="flex flex-wrap gap-2">
+                {{ range $currentPage.Params.tags }}
+                    <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" class="text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-md hover:bg-gray-200 dark:hover:bg-gray-600 whitespace-nowrap">
+                        {{ . }} 
+                    </a>
+                {{ end }}
+            </div>
+        </div>
+
+        <div class="mt-6">
+            <h4 class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-3">Bagikan:</h4>
+            <div class="flex space-x-2">
+                
+                {{ $title := .Title | urlize }}
+                {{ $url := .Permalink | urlize }}
+                
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ $url }}" target="_blank" aria-label="Bagikan ke Facebook" class="flex items-center justify-center w-10 h-10 rounded bg-[#1877F2] text-white"><i class="fab fa-facebook-f text-xl"></i></a> 
+                
+                <a href="https://twitter.com/intent/tweet?text={{ $title }}&url={{ $url }}" target="_blank" aria-label="Bagikan ke X" class="flex items-center justify-center w-10 h-10 rounded bg-[#000000] text-white"><i class="fab fa-twitter text-xl"></i></a>
+                
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ $url }}" target="_blank" aria-label="Bagikan ke LinkedIn" class="flex items-center justify-center w-10 h-10 rounded bg-[#0A66C2] text-white"><i class="fab fa-linkedin-in text-xl"></i></a>
+                
+                <a href="https://api.whatsapp.com/send?text={{ $title }}%20%7C%20{{ $url }}" target="_blank" aria-label="Bagikan ke WhatsApp" class="flex items-center justify-center w-10 h-10 rounded bg-[#25D366] text-white"><i class="fab fa-whatsapp text-xl"></i></a>
+ 
+                <a href="https://t.me/share/url?url={{ $url }}&text={{ $title }}" target="_blank" aria-label="Bagikan via Telegram" class="flex items-center justify-center w-10 h-10 rounded bg-[#0088CC] text-white"><i class="fab fa-telegram-plane text-xl"></i></a>
+            </div>
+        </div>
+
+
+        
+        <div id="policy-box" class="mt-8 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 flex items-center justify-between">
+            <div class="text-gray-900 dark:text-gray-100 space-y-1">
+                <p class="font-bold text-sm">Deuxly <span class="text-sm font-semibold">Kebijakan Komentar</span></p>
+                <p class="text-base">Tulis apa yang kamu pikirkan</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">
+                    Baca <a href="/privacy-policy/" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Kebijakan Berkomentar</a> kami sebelum berkomentar.
+                </p>
+            </div>
+            <button id="close-policy-btn" class="bg-black hover:bg-gray-900 dark:bg-black dark:hover:bg-gray-900 text-white font-semibold py-3 px-8 rounded-lg shadow-md transition duration-150 transform hover:scale-105">
+                Oke
+            </button>
+        </div>
+
+
+        {{ if .Site.Params.disqusShortname }}
+        <div class="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Komentar</h3>
+            <div id="disqus_thread"></div>
+            <script>
+                const disqusShortname = "{{ .Site.Params.disqusShortname }}";
+                const isDark = document.documentElement.classList.contains('dark');
+                const disqusTheme = isDark ? 'dark' : 'light';
+                
+                var disqus_config = function () {
+                    this.page.url = "{{ .Permalink }}";
+                    this.page.identifier = "{{ .File.UniqueID }}";
+                    this.page.config = function() {
+                        this.set('theme', disqusTheme);
+                    };
+                };
+                
+                (function() { 
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://' + disqusShortname + '.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+        {{ end }}
+        <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700 flex justify-between">
+            {{ with .Prev }}
+                <a href="{{ .Permalink }}" class="block w-1/2 pr-2">
+                    <span class="text-sm text-gray-500 dark:text-gray-400">Postingan sebelumnya</span>
+                    <h4 class="font-semibold text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 truncate">{{ .Title }}</h4>
+                </a>
+            {{ else }}
+                <div class="w-1/2 pr-2"></div>
+            {{ end }}
+            
+            {{ with .Next }}
+                <a href="{{ .Permalink }}" class="block w-1/2 pl-2 text-right">
+                    <span class="text-sm text-gray-500 dark:text-gray-400">Postingan berikutnya</span>
+                    <h4 class="font-semibold text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 truncate">{{ .Title }}</h4>
+                </a>
+            {{ else }}
+                <div class="w-1/2 pl-2 text-right"></div>
+            {{ end }}
+        </div>
+        
+        <div class="mt-8 p-4 bg-teal-100 dark:bg-teal-900 border border-teal-400 dark:border-teal-700 rounded-lg text-center text-gray-800 dark:text-gray-200">
+            Mahir Excel dalam 7 Hari, Cuma Rp49.300! Beli Sekarang!!
+            <a href="https://lynk.id/deuxly/jx89m3d4ee5y" class="font-semibold text-teal-700 dark:text-teal-400 hover:underline">Klik untuk melihat detail!</a>
+        </div>
+
+
+        <div class="mt-12">
+            <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Mungkin Anda Suka</h3>
+            <div class="flex space-x-4 overflow-x-auto pb-4">
+                
+                {{ $validPages := where .Site.RegularPages ".Section" "!=" "" }}
+                {{ $articlesToShuffle := where $validPages "Permalink" "!=" .Permalink }}
+                
+                {{/* Ambil 3 artikel acak dari koleksi */}}
+                {{ range first 3 (shuffle $articlesToShuffle) }}
+                    {{ $article := . }} 
+                    
+                    <a href="{{ $article.Permalink }}" class="min-w-[250px] block bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
+                        
+                        <div class="h-32 overflow-hidden" style="height: 128px;"> 
+                            {{ with $article.Params.image }}
+                                <img class="w-full h-full object-cover" src="{{ . | relURL }}" alt="{{ $article.Title }}">
+                            {{ else }}
+                                <img class="w-full h-full object-cover opacity-50" src="https://via.placeholder.com/250x128/4A5568/FFFFFF?text=Post" alt="Placeholder">
+                            {{ end }}
+                        </div>
+                        
+                        <div class="p-3">
+                            <h4 class="text-base font-semibold text-gray-800 dark:text-gray-200 leading-snug">
+                                {{ $article.Title }}
+                            </h4>
+                        </div>
+                    </a>
+                {{ end }}
+            </div>
+        </div>
+        
+    </div> <div class="lg:w-1/3">
+        <div class="sticky top-24 space-y-6">
+            
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Berlangganan Gratis</h3>
+                <p class="text-gray-700 dark:text-gray-300 mb-4 text-sm">Kamu akan menerima email update dari Deuxly</p>
+                <form action="#" method="POST" class="flex">
+                    <input type="email" placeholder="Alamat email" required class="px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 rounded-l-md shadow-sm flex-1">
+                    <button type="submit" aria-label="Subscribe" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-r-md flex items-center justify-center">
+                        <svg class="w-5 h-5 transform rotate-45 -mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                    </button>
+                </form>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Beri Dukungan</h3>
+                <p class="text-gray-700 dark:text-gray-300 mb-4 text-sm">Beri dukungan, dapatkan full source code project web untuk bahan referensi, tiru, dan modifikasi.</p>
+                <a href="https://ko-fi.com/your-username" target="_blank" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded shadow-md transition duration-150">
+                    Beri Dukungan
+                </a>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-4">Postingan Terbaru</h3>
+                <div class="space-y-5">
+                    {{ range first 5 .Site.RegularPages.ByDate.Reverse }}
+                        <a href="{{ .Permalink }}" class="group block">
+                            <h4 class="font-semibold text-gray-800 dark:text-gray-200 group-hover:text-blue-600 dark:group-hover:text-blue-400">{{ .Title }}</h4>
+                            
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">{{ .Date.Format "January 2, 2006" }} ~ 
+    {{ $wordCount := .WordCount | default 1 }}
+    {{ $readTime := div $wordCount 200 }}
+    {{ if lt $readTime 1 }}
+        1
+    {{ else }}
+        {{ $readTime }}
+    {{ end }}
+    mins read</p>
+
+                        </a>
+                    {{ end }}
+                </div>
+            </div>
+            
+            <a href="https://my.domainesia.com/ref.php?u=26367" target="_blank" class="block bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
+    <img src="/images/post/banner-1.svg" alt="Hosting Murah" class="w-full h-auto">
+</a>
+
+        </div>
+    </div> </div> {{ end }}

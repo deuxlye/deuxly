@@ -1,0 +1,45 @@
+{{ define "main" }}
+<div class="max-w-4xl mx-auto px-4 py-8 mt-4">
+    <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center hidden">Search</h1> 
+    
+    <div class="gcse-searchbox-only-placeholder">
+        <script async src="https://cse.google.com/cse.js?cx=957dbf5c5ee784ab5"></script>
+        <div class="gcse-searchbox-only"></div>
+    </div>
+
+    {{/* --- KONTEN ILUSTRASI DAN TEKS --- */}}
+    <div id="search-placeholder-content" class="flex flex-col items-center justify-center min-h-[400px] text-center">
+        <img src="/images/search-placeholder.svg" alt="Apa yang ingin kamu cari?" class="w-64 h-auto mb-8">
+        <p class="text-xl text-gray-700 dark:text-gray-300">Apa yang ingin kamu cari?</p>
+    </div>
+    {{/* --- AKHIR KONTEN --- */}}
+
+    <div class="mt-12">
+        <div class="gcse-searchresults-and-promotions"></div>
+        </div>
+</div>
+
+<script>
+    // Sembunyikan placeholder setelah hasil pencarian muncul
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchResultsDiv = document.querySelector('.gcse-searchresults-and-promotions');
+        const placeholderContent = document.getElementById('search-placeholder-content');
+        
+        const observer = new MutationObserver(function(mutationsList, observer) {
+            for(let mutation of mutationsList) {
+                if (mutation.type === 'childList' && searchResultsDiv.children.length > 0) {
+                    if (placeholderContent) {
+                        placeholderContent.style.display = 'none';
+                    }
+                    observer.disconnect(); 
+                    break;
+                }
+            }
+        });
+
+        if (searchResultsDiv && placeholderContent) {
+            observer.observe(searchResultsDiv, { childList: true, subtree: true });
+        }
+    });
+</script>
+{{ end }}
