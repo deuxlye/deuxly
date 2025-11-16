@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Hal-hal yang Boleh Di-Crawl (Semua Konten Utama)
+# Ini mencakup artikel, homepage, dan halaman statis.
+Allow: /
+
+# === OPTIMASI SEO: PENCEGAHAN KONTEN TIPIS ===
+
+# Disallow Halaman Indeks Taksonomi
+Disallow: /tags/
+Disallow: /categories/
+
+# Disallow Halaman Khusus Hugo
+Disallow: /404/
+Disallow: /404.html
+
+# === SITEMAP ===
+Sitemap: https://deuxly.id/sitemap.xml
