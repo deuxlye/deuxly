@@ -14,7 +14,15 @@
 {{ end }}
 
 <meta name="description" content="{{ $desc }}">
-<title>{{ block "title" . }}{{ if .IsHome }}Deuxly - Blogging & Learning{{ else }}{{ .Title }} | Deuxly{{ end }}{{ end }}</title>
+<title>
+    {{- if .IsHome -}}
+        {{ .Site.Title }} | {{ with .Site.Params.description }}{{ . }}{{ end }}
+    {{- else if eq .Kind "page" -}}
+        {{ .Title }}
+    {{- else -}}
+        {{ .Title }} | {{ .Site.Title }}
+    {{- end -}}
+</title>
 <link rel="canonical" href="{{ .Permalink }}">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>

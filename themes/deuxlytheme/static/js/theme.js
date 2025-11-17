@@ -72,3 +72,35 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// javascript back to top
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const backToTopButton = document.getElementById('back-to-top');
+    const scrollTrigger = 300; 
+
+    // Skrip hanya akan berjalan jika elemen tombol Back to Top ditemukan
+    if (backToTopButton) { 
+        // ... (sisanya kode event listener scroll dan click) ...
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > scrollTrigger) {
+                backToTopButton.style.opacity = '1';
+                backToTopButton.style.pointerEvents = 'auto'; 
+            } else {
+                backToTopButton.style.opacity = '0';
+                backToTopButton.style.pointerEvents = 'none'; 
+            }
+        });
+
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' 
+            });
+        });
+    }
+    // Jika tombol tidak ditemukan, skrip ini akan diam dan tidak menyebabkan error
+});
