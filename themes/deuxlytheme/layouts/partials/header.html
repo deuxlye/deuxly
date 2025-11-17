@@ -2,9 +2,11 @@
     <div class="max-w-6xl mx-auto px-4">
         <div class="flex justify-between items-center h-16">
             <div class="flex items-center space-x-6">
-                <a href="{{ .Site.BaseURL }}" class="flex items-center space-x-2"> 
-                   <a href="{{ .Site.BaseURL }}" class="flex items-center space-x-2" aria-label="Deuxly"></a>
-                    <img src="{{ "/images/logo.png" | relURL }}" alt="{{ .Site.Title }}" class="h-8 w-auto"></a></a>
+                
+                <a href="{{ .Site.BaseURL }}" 
+   class="flex items-center space-x-2" 
+   aria-label="Deuxly"> 
+   <img src="{{ "/images/logo.svg" | relURL }}" alt="{{ .Site.Title }}" class="h-8 w-auto"></a>
                 
                 <div class="hidden md:flex items-center space-x-6">
                     {{ range .Site.Menus.main }}
