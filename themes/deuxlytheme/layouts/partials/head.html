@@ -1,6 +1,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+{{ $desc := "" }}
+
+{{/* 1. Cek .Description di Front Matter */}}
+{{ if .Description }}
+    {{ $desc = .Description }}
+{{/* 2. Cek .Summary (abstrak artikel) */}}
+{{ else if .Summary }}
+    {{ $desc = .Summary | plainify }}
+{{/* 3. Fallback ke Deskripsi Situs di config.toml */}}
+{{ else }}
+    {{ $desc = .Site.Params.description }}
+{{ end }}
+
+<meta name="description" content="{{ $desc }}">
 <title>{{ block "title" . }}{{ if .IsHome }}Deuxly - Blogging & Learning{{ else }}{{ .Title }} | Deuxly{{ end }}{{ end }}</title>
 <link rel="canonical" href="{{ .Permalink }}">
 <script src="https://cdn.tailwindcss.com"></script>

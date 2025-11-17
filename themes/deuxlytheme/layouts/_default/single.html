@@ -8,7 +8,7 @@
         <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">{{ $currentPage.Title }}</h1>
         
         <div class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400 mb-6">
-            <span>By&nbsp;<a href="#" class="text-blue-600 hover:underline">{{ with $currentPage.Params.author }}{{ . }}{{ else }}deuxly{{ end }}</a></span>
+            <span>By&nbsp;<a href="https://deuxly.id/" class="text-blue-600 hover:underline">{{ with $currentPage.Params.author }}{{ . }}{{ else }}deuxly{{ end }}</a></span>
             <span>-</span>
             
             <span>{{ $currentPage.Date.Format "January 2, 2006" }} ~ 

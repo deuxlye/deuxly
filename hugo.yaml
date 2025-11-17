@@ -43,4 +43,7 @@ params:
   # Setting 2: Menentukan folder 'post' sebagai konten utama
   mainSections:
     - post
-# === TIDAK ADA BLOK 'params:' LAIN DI BAWAH INI ===
+  # === TIDAK ADA BLOK 'params:' LAIN DI BAWAH INI ===
+
+  description: "Teknologi Terbaru? Blogging Sukses? Tutorial Skill Baru? Jawabannya adalah Deuxly. Deuxly membedah dunia digital menjadi panduan lengkap yang mudah!" 
+  logo_url: "/images/logo.svg"
