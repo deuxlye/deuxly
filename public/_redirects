@@ -1,0 +1,5 @@
+# Aturan ini memerintahkan Cloudflare Pages: 
+# Jika permintaan ke path yang TIDAK ADA, sajikan halaman 404.html
+# dengan status HTTP 404 (bukan 200 OK atau 302 Redirect).
+
+/* /404.html 404

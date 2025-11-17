@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+    
+
+
+<meta name="description" content="Blogging &amp; Learning">
+<title>Search</title>
+<link rel="canonical" href="http://localhost:1313/search/">
+
+
+<link rel="stylesheet" href="http://localhost:1313/css/main.min.css">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="/css/wp-styles.css">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<style>
+     
+    .article-content pre[class*="language-"] {
+        background-color: #1E1E1E !important;  
+        padding: 1.5rem !important;
+        border-radius: 0.5rem;
+        line-height: 1.5;
+    }
+
+     
+     
+    .token.string {
+        color: #e6db74 !important; 
+    }
+     
+    .token.keyword {
+        color: #f92672 !important;
+    }
+     
+    .token.function, .token.builtin, .token.variable {
+        color: #66d9ef !important;
+    }
+     
+    .token.number, .token.boolean {
+        color: #ae81ff !important;
+    }
+     
+    .token.punctuation, .token.operator {
+        color: #f8f8f2 !important;
+    }
+
+     
+    .article-content h2 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
+         
+        border-bottom: 2px solid #e2e8f0;  
+        padding-bottom: 0.5rem;  
+        
+    }
+
+     
+    .dark .article-content h2 {
+        color: #f7fafc !important; 
+         
+        border-bottom-color: #4a5568; 
+    }
+     
+    .article-content h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+     
+    .dark .article-content h2, .dark .article-content h3 {
+        color: #f7fafc !important;  
+        border-bottom-color: #4a5568;
+    }
+    
+</style>
+
+<script>
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+</script>
+    
+        
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+
+  
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http:\/\/localhost:1313\/search\/" 
+  },
+  "headline": "\"Search\"",
+  "description": "\"\"",
+  "image": [
+    "" 
+  ],
+  "datePublished": "2025-11-16T23:45:00\u002b07:00",
+  "dateModified": "2025-11-16T23:45:00\u002b07:00",
+  "author": {
+    "@type": "Organization",
+    "name": "Deuxly"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Deuxly",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http:\/\/localhost:1313\/images\/logo.svg"
+    }
+  }
+  
+}
+</script>
+    
+</head>
+<div id="search-overlay" class="fixed inset-0 bg-white dark:bg-gray-900 bg-opacity-95 dark:bg-opacity-95 z-[9999] hidden">
+    <div class="max-w-4xl mx-auto p-6 md:p-12">
+        
+        <button id="close-search-btn" class="absolute top-4 right-4 text-gray-700 dark:text-gray-300 text-3xl hover:text-blue-600">&times;</button>
+        
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6 border-b border-gray-300 pb-3">Cari di Deuxly Blog</h2>
+
+        <div class="relative">
+            <input type="text" id="search-input" placeholder="Ketik kata kunci dan tekan Enter..." autofocus 
+                   class="w-full px-5 py-3 text-xl border-2 border-gray-400 dark:border-gray-600 rounded-full dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:border-blue-600">
+            <div id="search-results" class="mt-6 space-y-4 text-gray-800 dark:text-gray-200">
+                </div>
+        </div>
+    </div>
+</div>
+<body id="top" class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300 single-post">
+    <nav class="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50 border-b border-gray-200 dark:border-gray-700 relative">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex items-center space-x-6">
+                
+                <a href="http://localhost:1313/" 
+   class="flex items-center space-x-2" 
+   aria-label="Deuxly"> 
+   <img src="/images/logo.svg" alt="Deuxly" class="h-8 w-auto"></a>
+                
+                <div class="hidden md:flex items-center space-x-6">
+                    
+                        
+                        
+                            
+                        
+                        <a href="/" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">
+                            Beranda
+                        </a>
+                    
+                        
+                        
+                            
+                        
+                        <a href="/tags/coding/" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">
+                            Coding
+                        </a>
+                    
+                        
+                        
+                            
+                        
+                        <a href="/tags/blogger/" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">
+                            Blogger
+                        </a>
+                    
+                        
+                        
+                            
+                        
+                        <a href="/tags/internet/" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">
+                            Internet
+                        </a>
+                    
+                        
+                        
+                            
+                        
+                        <a href="/tags/lifestyle/" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">
+                            Lifestyle
+                        </a>
+                    
+                        
+                        
+                            
+                        
+                        <a href="/tags/informasi/" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">
+                            Informasi
+                        </a>
+                    
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="toggle-dark-mode" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400" aria-label="Toggle dark mode">
+                    <svg class="w-6 h-6 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg class="w-6 h-6 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+                <button id="search-button" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400" aria-label="Search">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </button>
+                <button id="mobile-menu-button" class="md:hidden text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400" aria-label="Toggle menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-white dark:bg-gray-800 shadow-md py-2">
+        
+            
+            
+                
+            
+            <a href="/" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                Beranda
+            </a>
+        
+            
+            
+                
+            
+            <a href="/tags/coding/" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                Coding
+            </a>
+        
+            
+            
+                
+            
+            <a href="/tags/blogger/" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                Blogger
+            </a>
+        
+            
+            
+                
+            
+            <a href="/tags/internet/" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                Internet
+            </a>
+        
+            
+            
+                
+            
+            <a href="/tags/lifestyle/" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                Lifestyle
+            </a>
+        
+            
+            
+                
+            
+            <a href="/tags/informasi/" class="block px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                Informasi
+            </a>
+        
+    </div>
+</nav>
+    
+    <main class="max-w-6xl mx-auto px-4 py-8 mt-4">
+        
+<div class="max-w-4xl mx-auto px-4 py-8 mt-4">
+    <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-8 text-center hidden">Search</h1> 
+    
+    <div class="gcse-searchbox-only-placeholder">
+        <script async src="https://cse.google.com/cse.js?cx=957dbf5c5ee784ab5"></script>
+        <div class="gcse-searchbox-only"></div>
+    </div>
+
+    
+    <div id="search-placeholder-content" class="flex flex-col items-center justify-center min-h-[400px] text-center">
+        <img src="/images/search-placeholder.svg" alt="Apa yang ingin kamu cari?" class="w-64 h-auto mb-8">
+        <p class="text-xl text-gray-700 dark:text-gray-300">Apa yang ingin kamu cari?</p>
+    </div>
+    
+
+    <div class="mt-12">
+        <div class="gcse-searchresults-and-promotions"></div>
+        </div>
+</div>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchResultsDiv = document.querySelector('.gcse-searchresults-and-promotions');
+        const placeholderContent = document.getElementById('search-placeholder-content');
+        
+        const observer = new MutationObserver(function(mutationsList, observer) {
+            for(let mutation of mutationsList) {
+                if (mutation.type === 'childList' && searchResultsDiv.children.length > 0) {
+                    if (placeholderContent) {
+                        placeholderContent.style.display = 'none';
+                    }
+                    observer.disconnect(); 
+                    break;
+                }
+            }
+        });
+
+        if (searchResultsDiv && placeholderContent) {
+            observer.observe(searchResultsDiv, { childList: true, subtree: true });
+        }
+    });
+</script>
+
+    </main>
+    
+    <footer class="border-t border-gray-200 dark:border-gray-700 mt-12">
+    <div class="max-w-6xl mx-auto px-4 py-10">
+        
+        <div class="flex flex-wrap gap-x-6 gap-y-2 mb-6">
+            <a href="/about" class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">About</a>
+            <a href="/contact" class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
+            <a href="/privacy-policy" class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">Privacy & Policy</a>
+            <a href="/terms-conditions" class="text-sm text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400">Terms & Conditions</a>
+        </div>
+        
+        <div>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+                © 2019 - 2025 Deuxly. All Rights Reserved.
+            </p>
+        </div>
+    </div>
+</footer>
+    
+    <script src="/js/theme.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+<a id="back-to-top" 
+   href="#top" 
+   class="fixed bottom-8 right-8 z-50 
+          p-3 bg-emerald-500 text-white 
+          rounded-full shadow-lg opacity-0 
+          transition-opacity duration-300 
+          hover:bg-emerald-600 hover:scale-105"
+   aria-label="Kembali ke atas">
+    
+    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path>
+    </svg>
+    
+</a>        
+
+<script src="/js/theme.js" defer></script> 
+</body>
+
+</body>
+</html>
