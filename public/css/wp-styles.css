@@ -1,0 +1,97 @@
+/* --- CSS COUNTERS UNTUK HEADING OTOMATIS (1., 1.1, 1.1.1) --- */
+    
+    /* 1. Reset Counter di Container Utama */
+    .article-content {
+        counter-reset: h2counter; /* Inisialisasi counter H2 */
+    }
+
+    /* 2. Style untuk H2 (Garis Bawah & Nomor Utama) */
+    .article-content h2 {
+        counter-reset: h3counter; /* Reset H3 setiap kali H2 naik */
+        counter-increment: h2counter; /* Naikkan angka H2 */
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-top: 2.5rem; /* Margin atas lebih besar */
+        margin-bottom: 0.5rem;
+        border-bottom: 2px solid #e2e8f0; 
+        padding-bottom: 0.5rem; 
+        color: #1a202c; /* Warna Teks Default */
+    }
+
+    /* Tampilkan Nomor H2 */
+    .article-content h2::before {
+        content: counter(h2counter) ". "; /* Menampilkan "1. " */
+        color: #33a370; /* Warna branding untuk nomor */
+        font-weight: 900;
+        margin-right: 10px;
+    }
+
+    /* 3. Style untuk H3 (Nomor 1.1) */
+    .article-content h3 {
+        counter-reset: h4counter; /* Reset H4 */
+        counter-increment: h3counter;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
+        padding-top: 0.5rem;
+    }
+    /* Tampilkan Nomor H3 */
+    .article-content h3::before {
+        content: counter(h2counter) "." counter(h3counter) " "; /* Menampilkan "1.1 " */
+        color: #33a370;
+        font-weight: 900;
+        margin-right: 10px;
+    }
+
+    /* 4. Style untuk H4 (Nomor 1.1.1) */
+    .article-content h4 {
+        counter-increment: h4counter;
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        padding-top: 0.3rem;
+    }
+    /* Tampilkan Nomor H4 */
+    .article-content h4::before {
+        content: counter(h2counter) "." counter(h3counter) "." counter(h4counter) " "; /* Menampilkan "1.1.1 " */
+        color: #33a370;
+        font-weight: 900;
+        margin-right: 10px;
+    }
+
+    /* Dark Mode Override */
+    .dark .article-content h2, .dark .article-content h3, .dark .article-content h4 {
+        color: #f7fafc !important; 
+        border-bottom-color: #4a5568;
+    }
+    .dark .article-content h2::before, .dark .article-content h3::before, .dark .article-content h4::before {
+        color: #48bb78; /* Hijau terang untuk Dark Mode */
+    }
+
+    /* --- CUSTOM STYLE UNTUK HALAMAN PENCARIAN --- */
+    /* Sembunyikan judul bawaan yang tidak perlu */
+    .gcse-searchbox-only {
+        border: none !important; /* Hapus border bawaan Google */
+        box-shadow: none !important; /* Hapus shadow bawaan Google */
+    }
+
+    /* Pastikan kotak pencarian menempel ke atas */
+    .gsc-control-cse {
+        padding: 0 !important; 
+    }
+
+    /* Style untuk kotak pencarian di halaman khusus */
+    .gcse-searchbox-only-placeholder {
+        max-width: 600px; /* Batasi lebar kotak pencarian */
+        margin: 0 auto 3rem auto; /* Atur margin dan center */
+        border: 1px solid #e2e8f0; /* Border abu-abu */
+        border-radius: 0.5rem; /* Sudut membulat */
+        overflow: hidden; /* Pastikan konten di dalamnya tidak keluar */
+    }
+    .dark .gcse-searchbox-only-placeholder {
+        border-color: #4a5568; /* Border di Dark Mode */
+    }
+    /* --- AKHIR CUSTOM STYLE PENCARIAN --- */
+    
