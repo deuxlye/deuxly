@@ -14,10 +14,17 @@
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "postcss": { 
+    "plugins": {
+      "@tailwindcss/postcss": {},
+      "autoprefixer": {}
+    }
+  },
   "bugs": {
     "url": "https://github.com/deuxlye/deuxly/issues"
   },
   "homepage": "https://github.com/deuxlye/deuxly#readme",
+  
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.17",
     "autoprefixer": "^10.4.22",
