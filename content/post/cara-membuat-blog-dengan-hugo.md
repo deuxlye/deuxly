@@ -31,13 +31,13 @@ Di artikel monster ini, kita akan bedah tuntas cara membuat blog dengan Hugo dar
 
 Sebelum kita masuk ke teknis "daging"-nya, kamu harus tahu dulu kenapa para *developer* dan *tech-blogger* di seluruh dunia berbondong-bondong migrasi ke Hugo.
 
-### 1. Kecepatan di Luar Nalar
+### Kecepatan di Luar Nalar
 Ini bukan *clickbait*. Hugo bisa memproses ribuan halaman artikel hanya dalam hitungan **milidetik**. Buat pengunjung, blog kamu akan terbuka nyaris instan. Google sangat menyukai website yang cepat (ingat *Core Web Vitals*?), jadi ini poin plus besar buat SEO.
 
-### 2. Keamanan Tingkat Tinggi
+### Keamanan Tingkat Tinggi
 Karena Hugo menghasilkan file statis (HTML, CSS, JS), tidak ada database yang bisa di-injeksi SQL, tidak ada celah plugin PHP yang bisa diretas, dan tidak ada halaman login admin yang bisa dibobol *brute-force*. Hacker bakal nangis kalau mau nyerang blog statis.
 
-### 3. Hosting Gratis Selamanya
+### Hosting Gratis Selamanya
 Ya, kamu nggak salah baca. Karena output Hugo cuma file HTML biasa, kamu bisa menaruhnya di **GitHub Pages**, **Netlify**, atau **Vercel** secara **GRATIS**. Ucapkan selamat tinggal pada tagihan hosting bulanan yang mahal!
 
 {{< box type="success" >}}
@@ -50,12 +50,12 @@ Ya, kamu nggak salah baca. Karena output Hugo cuma file HTML biasa, kamu bisa me
 
 Oke, cukup teorinya. Sekarang kita masuk ke mode praktek. Untuk menggunakan Hugo, kamu butuh "senjata" dasar. Jangan takut sama layar hitam (terminal), kita akan pandu pelan-pelan.
 
-### 1. Install Git (Wajib)
+### Install Git (Wajib)
 Hugo butuh Git untuk mengelola tema dan *deployment*.
 * Cek apakah sudah ada dengan ketik `git --version` di terminal/CMD.
 * Kalau belum, download di situs resmi Git dan install (tinggal *next-next* aja).
 
-### 2. Install Hugo
+### Install Hugo
 Cara install Hugo beda-beda tergantung OS kamu.
 
 **Pengguna Windows:**
@@ -82,7 +82,7 @@ brew install hugo
 Tergantung distro, tapi biasanya:
 `sudo apt install hugo` atau `sudo pacman -S hugo`.
 
-### 3. Cek Instalasi
+### Cek Instalasi
 Buka terminal/CMD baru, lalu ketik perintah ini untuk memastikan Hugo sudah siap tempur:
 
 {{< code lang="sh" >}}
@@ -233,7 +233,7 @@ Dengan mengatur file ini, kamu mengontrol seluruh perilaku website. Tidak perlu 
 
 Ini langkah yang paling ditunggu. Bagaimana cara agar blog di laptop bisa diakses seluruh dunia? Kita akan gunakan **Netlify** (Paling mudah buat pemula).
 
-### Langkah 1: Upload ke GitHub
+### Upload ke GitHub
 1.  Buat repository baru di GitHub (misal: `blog-ku`).
 2.  Upload semua kode kamu ke sana (kecuali folder `public` dan `resources` jika ada).
 
@@ -245,7 +245,7 @@ git remote add origin https://github.com/username/blog-ku.git
 git push -u origin main
 {{< /code >}}
 
-### Langkah 2: Sambungkan ke Netlify
+### Sambungkan ke Netlify
 1.  Buka [Netlify.com](https://netlify.com) dan daftar (Gratis).
 2.  Klik **"Add new site"** -> **"Import an existing project"**.
 3.  Pilih **GitHub** dan cari repository `blog-ku` yang tadi kamu buat.
@@ -260,13 +260,13 @@ Tunggu sekitar 10-30 detik (ya, secepat itu). Netlify akan memberikan URL acak (
 
 ## Tips Tambahan Agar Blog Hugo Makin Pro
 
-### 1. Manajemen Gambar
+### Manajemen Gambar
 Jangan taruh gambar sembarangan. Simpan gambar di folder `static/images/`. Saat memanggilnya di markdown, cukup panggil `/images/nama-gambar.jpg`. Hugo akan otomatis tahu.
 
-### 2. Shortcodes adalah Temanmu
+### Shortcodes adalah Temanmu
 Seperti yang kamu lihat di artikel ini, kita menggunakan kotak info, tombol, dan highlight kode. Itu semua dibuat pakai **Shortcodes**. Manfaatkan fitur ini agar artikelmu tidak membosankan (cuma teks doang).
 
-### 3. SEO di Hugo
+### SEO di Hugo
 Hugo sudah sangat SEO friendly dari lahir. Tapi pastikan kamu mengisi `description` di setiap Front Matter artikel dan di `hugo.yaml`. Google sangat suka struktur HTML Hugo yang bersih tanpa *bloatware*.
 
 ---
