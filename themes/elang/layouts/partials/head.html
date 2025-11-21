@@ -6,8 +6,7 @@
     {{ if .IsHome }}
         {{ .Site.Title }} - Blogging & Learning
     {{ else }}
-        {{ .Title }} - {{ .Site.Title }}
-    {{ end }}
+        {{ .Title }}{{ end }}
 </title>
 
 <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else if .Params.description }}{{ .Params.description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}">
