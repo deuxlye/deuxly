@@ -1,6 +1,6 @@
 baseURL: "https://deuxly.id/" # GANTI dengan URL deployment Anda
 languageCode: "id-ID"
-title: "deuxly"
+title: "Deuxly"
 theme: "elang"
 
 # --- TAMBAHKAN BLOK INI ---
