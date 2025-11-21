@@ -752,7 +752,7 @@ a.related-item:hover h4.related-title { color: var(--aksen); }
 /* Meta Data (Tanggal & Waktu Baca) */
 .recent-meta {
     font-size: 0.85rem; /* Ukuran kecil */
-    color: #888; /* Warna abu-abu */
+    color: #444; /* Warna abu-abu */
     font-weight: 400;
 }
 .recent-meta .separator {

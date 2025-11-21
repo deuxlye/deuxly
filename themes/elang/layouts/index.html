@@ -7,7 +7,9 @@
         </label>
         <form class='cari-form' style="display:flex; flex-grow:1;" onsubmit="event.preventDefault();" action="javascript:void(0);">
             <input id="mobile-search-input" aria-label='Cari blog ini' autocomplete='off' class='cari-input' name='q' placeholder='Cari artikel' required='required' type='text'/>
-            <button type="button" class='cari-ikon a' style="background:none; border:none; cursor:pointer; padding:0;">
+            
+            <button type="button" class="cari-ikon a" style="background:none; border:none; cursor:pointer; padding:0;" aria-label="Cari Artikel"></button>
+
                 <svg viewBox='0 0 24 24'><circle cx='11.7666' cy='11.7666' r='8.98856'></circle><path d='M18.0183 18.4851L21.5423 22'></path></svg>
             </button>
             <div id="mobile-search-results" class="search-results h" style="top: 50px;"></div>
