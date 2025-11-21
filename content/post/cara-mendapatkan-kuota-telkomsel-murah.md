@@ -5,7 +5,7 @@ draft: false
 tags: ["Internet", "Telkomsel"]
 slug: "cara-mendapatkan-kuota-telkomsel-murah" 
 keywords: ["Cara Mendapatkan Kuota Telkomsel Murah", "Kuota Telkomsel Murah", "Promo Kuota Telkomsel"]
-image: "https://deuxlye.github.io/hosting-gambar/cara-mendapatkan-kuota-telkomsel-murah-meriah.png"
+image: "https://deuxly.github.io/hosting-gambar/cara-mendapatkan-kuota-telkomsel-murah-meriah.png"
 author: "Deuxly"
 description: "Bosan kuota mahal? Cara Mendapatkan Kuota Telkomsel Murah meriah ala Deuxly.id! Dari kode sakti, aplikasi rahasia, sampai trik tukar poin. Dompet aman, streaming lancar! trik kuota Telkomsel paling up-to-date di 2025!"
 --- 

@@ -4,7 +4,7 @@ date: 2025-11-12T19:04:00+07:00
 draft: false
 tags: ["Coding", "HTML"]
 slug: "belajar-html-dasar"
-image: "https://deuxlye.github.io/hosting-gambar/Belajar-HTML-Dasar.png"
+image: "https://deuxly.github.io/hosting-gambar/Belajar-HTML-Dasar.png"
 author: "Deuxly"
 description: "Belajar HTML Dasar merupakan Pintu Masuk Coding termudah buat Pemula. Ubah Teks Polos menjadi Website Utuh. Kuasai Rangkaian Tag esensial sekarang!"
 ---

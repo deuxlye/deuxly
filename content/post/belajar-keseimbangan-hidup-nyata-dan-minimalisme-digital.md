@@ -4,7 +4,7 @@ date: 2025-11-20T08:37:38+07:00
 draft: false
 tags: ["Lifestyle"]
 slug: "belajar-keseimbangan-hidup-nyata-dan-minimalisme-digital" 
-image: "http://deuxlye.github.io/hosting-gambar/belajar-keseimbangan-hidup-nyata-dan-minimalisme-digital.png"
+image: "http://deuxly.github.io/hosting-gambar/belajar-keseimbangan-hidup-nyata-dan-minimalisme-digital.png"
 author: "Deuxly"
 description: "Capek didikte harus sukses? Deuxly memandu kamu keluar dari jebakan self-improvement yang toxic. Temukan cara menciptakan work-life balance dan hidup minimalis yang benar-benar bahagia, bukan sekadar konten media sosial."
 ---
@@ -21,7 +21,6 @@ Di era serba digital ini, *lifestyle* kita memang makin rumit. Kita dibombardir 
 
 Artikel ini bukan tentang tips-tips *cliché* untuk jadi sukses, tapi tentang bagaimana kita bisa kembali ke **esensi** hidup yang seimbang. Ini tentang seni menemukan *work-life balance* dan **minimalisme digital** yang *relatable* dan sesuai dengan ritme kamu yang sebenarnya.
 
----
 
 ## Membongkar Mitos-Mitos *Lifestyle* yang *Toxic*
 
@@ -41,8 +40,6 @@ Untuk bisa menemukan keseimbangan, kita harus tahu dulu apa yang bikin kita miri
 
 * **Yang Kamu Dengar:** *"Lihat, dia udah punya mobil, *trip* ke luar negeri, kok aku gini-gini aja?"*
 * **Kenyataan:** Media sosial adalah **etalase terbaik** dari kehidupan seseorang. Yang kamu lihat hanya **1%** dari seluruh proses, perjuangan, dan utang-utang yang mungkin mereka miliki. Fokus pada **perjalananmu sendiri** adalah kunci utama untuk mencapai ketenangan.
-
----
 
 ## Minimalisme Digital: Senjata Rahasia Keseimbangan
 

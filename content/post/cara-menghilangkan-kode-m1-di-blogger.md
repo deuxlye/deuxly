@@ -4,7 +4,7 @@ date: 2025-11-08
 draft: false
 tags: ["Blogger"]
 slug: "cara-menghilangkan-kode-m1-di-blogger"
-image: "https://deuxlye.github.io/hosting-gambar/cara-hapus-kode-m-1-blogger.png"
+image: "https://deuxly.github.io/hosting-gambar/cara-hapus-kode-m-1-blogger.png"
 author: "Deuxly"
 description: "Buat kamu yang ngeblog pakai Blogger (Blogspot), pasti udah sering banget kan lihat kode ?m=1 nongol di belakang URL postinganmu?"
 ---
