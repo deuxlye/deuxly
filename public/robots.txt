@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /404.html
-Disallow: /search/
-
-Sitemap: https://deuxly.id/sitemap.xml

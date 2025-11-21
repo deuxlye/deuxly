@@ -190,7 +190,7 @@ hugo server
 Atau kalau kamu mau lihat artikel yang masih draft, ketik:
 `hugo server -D`
 
-Buka browser dan akses **`http://localhost:1313`**.
+Buka browser dan akses **`https://localhost:1313`**.
 Setiap kali kamu tekan `Ctrl+S` (Save) di editor teks, browser akan otomatis refresh dalam milidetik. Rasanya magis banget, *sat set wat wet!*
 
 ---

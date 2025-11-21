@@ -5,7 +5,7 @@ draft: false
 featured: false
 tags: ["Lifestyle"]
 slug: "belajar-keseimbangan-hidup-nyata-dan-minimalisme-digital" 
-image: "http://deuxly.github.io/hosting-gambar/belajar-keseimbangan-hidup-nyata-dan-minimalisme-digital.png"
+image: "https://deuxly.github.io/hosting-gambar/belajar-keseimbangan-hidup-nyata-dan-minimalisme-digital.png"
 author: "deuxly"
 description: "Capek didikte harus sukses? deuxly memandu kamu keluar dari jebakan self-improvement yang toxic. Temukan cara menciptakan work-life balance dan hidup minimalis yang benar-benar bahagia."
 ---
