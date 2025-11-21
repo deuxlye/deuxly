@@ -1,7 +1,7 @@
 ---
 title: "Panduan Lengkap Membuat Blog Super Cepat dengan Hugo (Dari Nol Sampai Online)"
 date: 2025-11-21T14:30:00+07:00
-lastmod: 2025-11-22
+lastmod: 2025-11-21
 draft: false
 featured: false
 tags: ["Blogger", "Coding", "Internet"]
