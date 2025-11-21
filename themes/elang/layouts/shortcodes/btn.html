@@ -1,0 +1,3 @@
+<a href="{{ .Get "href" }}" class="btn-full {{ if eq (.Get "type") "download" }}btn-download{{ else if eq (.Get "type") "demo" }}btn-demo{{ else if eq (.Get "type") "outline" }}btn-outline{{ else }}btn-aksen{{ end }}" target="_blank" rel="noopener noreferrer">
+    {{ .Inner }}
+</a>

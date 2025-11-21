@@ -1,0 +1,8 @@
+{{- $lang := .Get "lang" | default "text" -}}
+{{- $title := .Get "title" -}}
+
+{{- $content := .Inner | strings.TrimRight "\r\n " -}}
+
+<pre class="text {{ $lang }}" {{ if $title }}data-title="{{ $title }}"{{ end }}>
+<code>{{ $content | htmlEscape | safeHTML }}</code>
+</pre>

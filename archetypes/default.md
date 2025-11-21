@@ -2,9 +2,10 @@
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 draft: true
+featured: false
 tags: [""]
 slug: "" 
 image: "https://deuxly.github.io/hosting-gambar/"
-author: "Deuxly"
+author: "deuxly"
 description: ""
 ---

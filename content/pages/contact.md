@@ -5,7 +5,7 @@ draft: false
 layout: "single"
 ---
 
-Sebagai pengelola tunggal **Deuxly Blog**, saya menghargai setiap pesan yang masuk! Silakan gunakan detail kontak yang relevan di bawah ini.
+Sebagai pengelola tunggal **deuxly Blog**, saya menghargai setiap pesan yang masuk! Silakan gunakan detail kontak yang relevan di bawah ini.
 
 ## Kontak Langsung (Static)
 

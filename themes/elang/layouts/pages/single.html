@@ -1,0 +1,36 @@
+{{ define "main" }}
+
+<div class='breadcrumb'>
+    <ul itemscope='itemscope' itemtype='https://schema.org/BreadcrumbList'>
+        <li itemprop='itemListElement' itemscope='itemscope' itemtype='https://schema.org/ListItem'>
+            <a class='bread-home' href='{{ .Site.BaseURL }}' itemprop='item' title='Home'>
+                <span itemprop='name'>Beranda</span>
+            </a>
+            <meta content='1' itemprop='position'/>
+        </li>
+        <li itemprop='itemListElement' itemscope='itemscope' itemtype='https://schema.org/ListItem'>
+            <span itemprop='name'>{{ .Title }}</span>
+            <meta content='2' itemprop='position'/>
+        </li>
+    </ul>
+</div>
+
+<article class='post-artikel artikel single'>
+    <div class='post-bungkus'>
+        <div class='post-isi'>
+            <h1 class='entry-title'>{{ .Title }}</h1>
+            
+            {{ if .Params.image }}
+            <div class='post-gambar gambar' style="margin: 1.5rem 0; width: 100%;">
+                <img alt='{{ .Title }}' src='{{ .Params.image }}' style="width: 100%; height: auto; display: block; border-radius: 7px;"/>
+            </div>
+            {{ end }}
+
+            <div class='post-body' id='post-body'>
+                {{ .Content }}
+            </div>
+        </div>
+    </div>
+</article>
+
+{{ end }}

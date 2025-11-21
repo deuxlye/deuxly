@@ -1,0 +1,23 @@
+<div class='widget-konten'>
+    <h3 class='widget-judul'>Postingan Terbaru</h3>
+    <ul class='recent-list'>
+        {{ range first 5 .Site.RegularPages }}
+        <li>
+            <a href="{{ .Permalink }}" class="recent-title">{{ .Title }}</a>
+            <div class="recent-meta">
+                <span class="date">{{ .Date.Format "January 02, 2006" }}</span>
+                <span class="separator">~</span>
+                <span class="read-time">{{ .ReadingTime }} mins read</span>
+            </div>
+        </li>
+        {{ end }}
+    </ul>
+</div>
+
+<div class='widget-konten ad-slot' style="padding: 0; overflow: hidden; border: none; background: transparent; box-shadow: none;">
+    <a href="https://my.domainesia.com/ref.php?u=26367" title="Iklan">
+        <img src="/images/post/banner-1.svg" 
+             alt="Iklan" 
+             style="width: 100%; height: auto; display: block; border-radius: 10px;">
+    </a>
+</div>

@@ -1,0 +1,109 @@
+<div class='kiri'>
+    <div class='kiri-bungkus'>
+        <header class='logo'>
+    <a href="{{ .Site.BaseURL }}" title="{{ .Site.Title }}">
+        {{ if .Site.Params.logo }}
+            <img src="{{ .Site.Params.logo | relURL }}" alt="{{ .Site.Title }}" class="logo-img">
+        {{ else }}
+            <span class="logo-text">{{ .Site.Title }}<span style="color:var(--aksen)">.</span></span>
+        {{ end }}
+    </a>
+</header>
+
+        <div class='kiri-isi s'>
+            <div class='kiri-atas'>
+    <form class='cari r' onsubmit="event.preventDefault();" action="javascript:void(0);">
+        <div class='cari-ikon-kiri'>
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+        
+        <input id="sidebar-search-input" aria-label='Cari artikel' autocomplete='off' class='cari-input' name='q' placeholder='Ketik untuk mencari...' required='required' type='text'/>
+        
+        <div id="sidebar-search-results" class="search-results h"></div>
+    </form>
+</div>
+            
+            <nav class='menu' itemscope='itemscope' itemtype='https://schema.org/SiteNavigationElement'>
+                <ul>
+                    {{ $currentPage := . }}
+                    {{ range .Site.Menus.main }}
+                    {{ $active := or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}
+                    
+                    <li class="{{ if $active }}aktif{{ end }}">
+                        <a class='kiri-menu f' href='{{ .URL }}' itemprop='url' title='{{ .Name }}'>
+                            
+                            {{ if eq .Name "Beranda" }}
+                                <svg viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+
+                            {{ else if eq .Name "Coding" }}
+                                <svg viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+
+                            {{ else if eq .Name "Blogger" }}
+                                <svg viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+
+                            {{ else if eq .Name "Internet" }}
+                                <svg viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+
+                            {{ else if eq .Name "Lifestyle" }}
+                                <svg viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+
+                            {{ else if eq .Name "Informasi" }}
+                                <svg viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+
+                            {{ else }}
+                                <svg viewBox='0 0 24 24'><circle cx='12' cy='12' r='2'></circle><circle cx='19' cy='12' r='2'></circle><circle cx='5' cy='12' r='2'></circle></svg>
+                            {{ end }}
+
+                            <span class='kiri-menu-teks' itemprop='name'>{{ .Name }}</span>
+                        </a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </nav>
+
+            <div class='tampilan f'>
+                <input class='h' id='mode' type='checkbox'/>
+                <input class='h' id='aksen' type='checkbox'/>
+                
+                <label class='kiri-menu aksen-label f' for='aksen' title='Aksen Warna'>
+                    <svg viewBox='0 0 24 24'>
+                        <path class='y' d='M20.168 7.25025V7.25025C19.4845 6.05799 17.9712 5.65004 16.7885 6.33852C15.7598 6.93613 14.4741 6.18838 14.4741 4.99218C14.4741 3.61619 13.3659 2.5 11.9998 2.5V2.5C10.6337 2.5 9.52546 3.61619 9.52546 4.99218C9.52546 6.18838 8.23977 6.93613 7.21199 6.33852C6.02829 5.65004 4.51507 6.05799 3.83153 7.25025C3.14896 8.4425 3.55399 9.96665 4.73769 10.6541C5.76546 11.2527 5.76546 12.7473 4.73769 13.3459C3.55399 14.0343 3.14896 15.5585 3.83153 16.7498C4.51507 17.942 6.02829 18.35 7.21101 17.6625H7.21199C8.23977 17.0639 9.52546 17.8116 9.52546 19.0078V19.0078C9.52546 20.3838 10.6337 21.5 11.9998 21.5V21.5C13.3659 21.5 14.4741 20.3838 14.4741 19.0078V19.0078C14.4741 17.8116 15.7598 17.0639 16.7885 17.6625C17.9712 18.35 19.4845 17.942 20.168 16.7498C20.8515 15.5585 20.4455 14.0343 19.2628 13.3459H19.2618C18.2341 12.7473 18.2341 11.2527 19.2628 10.6541C20.4455 9.96665 20.8515 8.4425 20.168 7.25025Z'></path>
+                        <path class='x' d='M12 9.5C13.3809 9.5 14.5 10.6191 14.5 12C14.5 13.3809 13.3809 14.5 12 14.5C10.6191 14.5 9.5 13.3809 9.5 12C9.5 10.6191 10.6191 9.5 12 9.5Z'></path>
+                    </svg>
+                    <span class='kiri-menu-teks f'>Warna <i>›</i></span>
+                </label>
+
+                <div class='mode-label f'>
+                    <label class='switch bg-50 round f r' for='mode' title='Mode Tampilan'>
+                        <span class='terang f'><svg viewBox='0 0 24 24'><path d='M12 18.5C15.5899 18.5 18.5 15.5899 18.5 12C18.5 8.41015 15.5899 5.5 12 5.5C8.41015 5.5 5.5 8.41015 5.5 12C5.5 15.5899 8.41015 18.5 12 18.5Z'></path><path d='M19.14 19.14L19.01 19.01M19.01 4.99L19.14 4.86L19.01 4.99ZM4.86 19.14L4.99 19.01L4.86 19.14ZM12 2.08V2V2.08ZM12 22V21.92V22ZM2.08 12H2H2.08ZM22 12H21.92H22ZM4.99 4.99L4.86 4.86L4.99 4.99Z'></path></svg></span>
+                        <span class='gelap f'><svg viewBox='0 0 24 24'><path d='M2.03009 12.42C2.39009 17.57 6.76009 21.76 11.9901 21.99C15.6801 22.15 18.9801 20.43 20.9601 17.72C21.7801 16.61 21.3401 15.87 19.9701 16.12C19.3001 16.24 18.6101 16.29 17.8901 16.26C13.0001 16.06 9.00009 11.97 8.98009 7.13996C8.97009 5.83996 9.24009 4.60996 9.73009 3.48996C10.2701 2.24996 9.62009 1.65996 8.37009 2.18996C4.41009 3.85996 1.70009 7.84996 2.03009 12.42Z'></path></svg></span>
+                    </label>
+                </div>
+
+                <div class='aksen-warna f'>
+                    <label aria-label='Aksen Hijau' class='aksen-pilih hijau r'><input checked='checked' class='cek' name='aksen' type='radio' value='hijau'/><svg class='a' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'></polyline></svg></label>
+                    <label aria-label='Aksen Biru' class='aksen-pilih biru r'><input class='cek' name='aksen' type='radio' value='biru'/><svg class='a' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'></polyline></svg></label>
+                    <label aria-label='Aksen Jingga' class='aksen-pilih jingga r'><input class='cek' name='aksen' type='radio' value='jingga'/><svg class='a' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'></polyline></svg></label>
+                    <label aria-label='Aksen Merah' class='aksen-pilih merah r'><input class='cek' name='aksen' type='radio' value='merah'/><svg class='a' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'></polyline></svg></label>
+                    <label aria-label='Aksen Ungu' class='aksen-pilih ungu r'><input class='cek' name='aksen' type='radio' value='ungu'/><svg class='a' viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'></polyline></svg></label>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <div class="link-footer">
+                <a href="{{ .Site.BaseURL }}sitemap.xml">Sitemap</a> - <a href="{{ .Site.BaseURL }}pages/terms-conditions/">Terms & Conditions</a> - <a href="{{ .Site.BaseURL }}pages/privacy-policy/">Privacy - <a href="{{ .Site.BaseURL }}pages/about/">About</a>
+                <a href="{{ .Site.BaseURL }}pages/contact/">Contact</a>
+            </div>
+
+            <ul class="sosial f">
+                <li><a href="https://codepen.io/deuxly" class="codepen"><svg viewBox="0 0 24 24"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon><line x1="12" y1="22" x2="12" y2="15.5"></line><polyline points="22 8.5 12 15.5 2 8.5"></polyline><polyline points="2 15.5 12 8.5 22 15.5"></polyline><line x1="12" y1="2" x2="12" y2="8.5"></line></svg></a></li>
+                <li><a href="https://facebook.com/itsdeuxly" class="facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a></li>
+                <li><a href="https://x.com/deuxlyw" class="twitter"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a></li>
+                <li><a href="https://instagram.com/langmalaka" class="instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a></li>
+            </ul>
+
+             <div class='atribut'><p>Copyright © {{ now.Year }}</p><p>Theme by <cite class='b'>deuxly</cite></p></div>
+        </footer>
+    </div>
+</div>

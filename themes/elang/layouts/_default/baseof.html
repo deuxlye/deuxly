@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html dir='ltr' lang='{{ .Site.LanguageCode }}'>
+<head>
+    {{ partial "head.html" . }}
+</head>
+<body class='{{ if .IsHome }}home multi{{ else }}item single{{ end }}'>
+    
+    <div class='deuxly g'>
+        <input class='ham h' id='ham' type='checkbox'/>
+        
+        {{ partial "sidebar-left.html" . }}
+
+        <div class='konten g'>
+            <div class='baliho section' id='baliho'></div>
+
+            <div class='tengah section' id='main'>
+                 {{ block "main" . }}{{ end }}
+            </div>
+
+            <div class='kanan section' id='aside'>
+                {{ partial "sidebar-right.html" . }}
+            </div>
+        </div>
+        
+        <div class='ekstra r'><label class='cover fi' for='ham'></label></div>
+        
+        <button class='totop fi'><svg class=' fill a' viewBox='0 0 24 24'><path d='M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z'></path></svg></button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const htmlTag = document.documentElement;
+            
+            // --- 1. LOGIKA SCROLL TO TOP ---
+            const toTop = document.querySelector(".totop");
+            window.addEventListener("scroll", () => {
+                if (window.pageYOffset > 100) {
+                    toTop.classList.add("tampil");
+                } else {
+                    toTop.classList.remove("tampil");
+                }
+            });
+            toTop.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+
+            // --- 2. LOGIKA DARK MODE (UPDATE DISQUS SUPPORT) ---
+            const modeCheckbox = document.getElementById('mode');
+            
+            // Cek LocalStorage saat load
+            if (localStorage.getItem('theme') === 'gelap') {
+                htmlTag.setAttribute('data-tema', 'gelap');
+                if(modeCheckbox) modeCheckbox.checked = true;
+            }
+            
+            // Listener Ubah Mode
+            if(modeCheckbox){
+                modeCheckbox.addEventListener('change', function() {
+                    let newTheme = 'terang'; // Default Light
+
+                    if (this.checked) {
+                        htmlTag.setAttribute('data-tema', 'gelap');
+                        localStorage.setItem('theme', 'gelap');
+                        newTheme = 'gelap';
+                    } else {
+                        htmlTag.removeAttribute('data-tema');
+                        localStorage.setItem('theme', 'terang');
+                    }
+
+                    // --- TAMBAHAN: RELOAD DISQUS AGAR WARNA BERUBAH ---
+                    // Cek apakah Disqus sudah dimuat di halaman ini?
+                    if (typeof DISQUS !== 'undefined') {
+                        DISQUS.reset({
+                            reload: true,
+                            config: function () {
+                                // Paksa skema warna sesuai tema baru
+                                this.colorScheme = (newTheme === 'gelap') ? 'dark' : 'light';
+                            }
+                        });
+                    }
+                });
+            }
+
+            // --- 3. LOGIKA WARNA AKSEN ---
+            const aksenRadios = document.querySelectorAll('input[name="aksen"]');
+            const savedAksen = localStorage.getItem('aksen');
+            if (savedAksen) {
+                htmlTag.setAttribute('data-aksen', savedAksen);
+                const activeRadio = document.querySelector(`input[value="${savedAksen}"]`);
+                if(activeRadio) activeRadio.checked = true;
+            }
+            aksenRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    htmlTag.setAttribute('data-aksen', this.value);
+                    localStorage.setItem('aksen', this.value);
+                });
+            });
+
+            // --- 4. LOGIKA GRID / LIST HOMEPAGE ---
+            const layoutCheckbox = document.getElementById("layout");
+            const savedLayout = localStorage.getItem("blogLayout");
+            
+            if (savedLayout === 'list') {
+                htmlTag.setAttribute("data-layout", "list");
+                if(layoutCheckbox) layoutCheckbox.checked = true;
+            } else {
+                htmlTag.removeAttribute("data-layout");
+                if(layoutCheckbox) layoutCheckbox.checked = false;
+            }
+            
+            if (layoutCheckbox) {
+                layoutCheckbox.addEventListener("change", function() {
+                    if (this.checked) {
+                        htmlTag.setAttribute("data-layout", "list");
+                        localStorage.setItem("blogLayout", "list");
+                    } else {
+                        htmlTag.removeAttribute("data-layout");
+                        localStorage.setItem("blogLayout", "grid");
+                    }
+                });
+            }
+        });
+
+        // ... (Kode sebelumnya: Scroll to Top, Dark Mode, dll biarkan saja) ...
+
+    // --- 5. FITUR COPY CODE BLOCK ---
+    // Cari semua elemen <pre><code>
+    const codeBlocks = document.querySelectorAll('.post-body pre > code');
+
+    codeBlocks.forEach((codeBlock) => {
+        // 1. Buat Tombol
+        const button = document.createElement('button');
+        button.className = 'copy-code-button';
+        button.type = 'button';
+        button.innerText = 'Salin';
+
+        // 2. Masukkan tombol ke dalam parent <pre>
+        const pre = codeBlock.parentNode;
+        if (pre.parentNode.classList.contains('highlight')) {
+            // Jika Hugo membungkus dengan div .highlight, taruh di situ
+            pre.parentNode.style.position = 'relative';
+            pre.parentNode.appendChild(button);
+        } else {
+            // Jika raw pre
+            pre.style.position = 'relative';
+            pre.appendChild(button);
+        }
+
+        // 3. Event Listener saat diklik
+        button.addEventListener('click', () => {
+            // Salin teks
+            navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+                // Ubah teks tombol jadi "Tersalin"
+                button.innerText = 'Tersalin!';
+                button.classList.add('copied');
+
+                // Kembalikan ke semula setelah 2 detik
+                setTimeout(() => {
+                    button.innerText = 'Salin';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Gagal menyalin:', err);
+                button.innerText = 'Error';
+            });
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+    
+    // --- KONFIGURASI LIVE SEARCH ---
+    const searchConfig = [
+        { input: 'sidebar-search-input', result: 'sidebar-search-results' },
+        { input: 'mobile-search-input', result: 'mobile-search-results' },
+        // TAMBAHAN UNTUK SINGLE POST:
+        { input: 'single-search-input',  result: 'single-search-results' }
+    ];
+
+    let searchIndex = []; // Tempat menyimpan data artikel
+
+    // Fungsi untuk mengambil data JSON
+    async function loadSearchData() {
+        if (searchIndex.length > 0) return; // Jangan load kalau sudah ada
+        try {
+            console.log("Mencoba mengambil index.json...");
+            const response = await fetch('/index.json');
+            if (!response.ok) throw new Error("Gagal akses index.json");
+            searchIndex = await response.json();
+            console.log("Berhasil! Data dimuat:", searchIndex.length, "artikel.");
+        } catch (e) {
+            console.error("Error Live Search:", e);
+        }
+    }
+
+    // Fungsi render hasil
+    searchConfig.forEach(config => {
+        const inputEl = document.getElementById(config.input);
+        const resultEl = document.getElementById(config.result);
+
+        if (!inputEl || !resultEl) return;
+
+        // 1. Load data saat input diklik/fokus
+        inputEl.addEventListener('focus', loadSearchData);
+
+        // 2. Saat mengetik
+        inputEl.addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase().trim();
+
+            // Sembunyikan jika kosong
+            if (query.length < 1) {
+                resultEl.style.display = 'none';
+                resultEl.innerHTML = '';
+                return;
+            }
+
+            // Filter Data
+            const results = searchIndex.filter(item => {
+                // Cek null safety (jika title/tags kosong)
+                const title = item.title ? item.title.toLowerCase() : "";
+                const tags = item.tags ? item.tags.join(" ").toLowerCase() : "";
+                return title.includes(query) || tags.includes(query);
+            }).slice(0, 5); // Max 5 hasil
+
+            // Tampilkan Hasil
+            if (results.length > 0) {
+                let html = '';
+                results.forEach(post => {
+                    // Cek gambar
+                    let img = post.image ? 
+                        `<img src="${post.image}" class="search-thumb">` : 
+                        `<div class="search-thumb no-img"><svg viewBox="0 0 24 24" style="width:20px;fill:#999"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>`;
+                    
+                    html += `
+                    <a href="${post.permalink}" class="search-item">
+                        ${img}
+                        <div class="search-meta">
+                            <div class="search-title">${post.title}</div>
+                        </div>
+                    </a>`;
+                });
+                resultEl.innerHTML = html;
+                resultEl.style.display = 'block';
+            } else {
+                resultEl.innerHTML = `<div class="search-empty">Tidak ditemukan.</div>`;
+                resultEl.style.display = 'block';
+            }
+        });
+
+        // 3. Matikan Enter
+        inputEl.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') e.preventDefault();
+        });
+    });
+
+    // Tutup jika klik di luar
+    document.addEventListener('click', function(e) {
+        searchConfig.forEach(config => {
+            const inputEl = document.getElementById(config.input);
+            const resultEl = document.getElementById(config.result);
+            if (inputEl && resultEl) {
+                if (!inputEl.contains(e.target) && !resultEl.contains(e.target)) {
+                    resultEl.style.display = 'none';
+                }
+            }
+        });
+    });
+});
+
+    </script>
+</body>
+</html>

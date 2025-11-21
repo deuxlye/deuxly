@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Page Not Found</title>
+
+    <meta http-equiv="refresh" content="0; url={{ .Site.BaseURL }}">
+
+    <script>
+        // Menggunakan .replace() agar user tidak terjebak loop saat tekan tombol Back
+        window.location.replace("{{ .Site.BaseURL }}");
+    </script>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f6f6f9; /* Sesuai warna tema kita */
+            color: #5c7099;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h3>Halaman tidak ditemukan</h3>
+        <p>Mengalihkan ke Beranda...</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+<details>
+    <summary>{{ .Get "title" | default "Klik untuk melihat" }}</summary>
+    <div class="spoiler-content">
+        {{ .Inner | markdownify }}
+    </div>
+</details>

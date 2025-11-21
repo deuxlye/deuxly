@@ -1,6 +1,7 @@
 ---
 title: "Terms & Conditions"
 date: 2025-11-11
+slug: "terms-conditions/"
 ---
 
 Dokumen ini terakhir diperbarui pada **12 November 2025**.

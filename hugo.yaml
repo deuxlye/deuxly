@@ -1,49 +1,80 @@
 baseURL: "https://deuxly.id/" # GANTI dengan URL deployment Anda
 languageCode: "id-ID"
-title: "Deuxly"
-theme: "deuxlytheme"
+title: "deuxly"
+theme: "elang"
 
 # --- TAMBAHKAN BLOK INI ---
 permalinks:
   post: '/:slug/'
 # -------------------------
 
-# Konfigurasi Taxonomi
-taxonomies:
-  tag: "tags"
-  category: "categories"
+# PENTING: Agar HTML di dalam Markdown bisa jalan
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  tableOfContents:
+    endLevel: 4   # Sampai H4
+    ordered: false # Pakai bullet points (ul), bukan angka (ol)
+    startLevel: 2 # Mulai dari H2
 
-# Konfigurasi Menu Navigasi (Untuk Header)
+# Tambahkan ini di hugo.yaml
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # <--- Ini Wajib
+
+# Konfigurasi Artikel Terkait (Related Posts)
+related:
+  includeNewer: true
+  threshold: 80
+  toLower: true
+  indices:
+  - name: "tags"
+    weight: 100
+  - name: "categories"
+    weight: 70
+
+# Konfigurasi Menu Sidebar Kiri
 menu:
   main:
-    - name: "Beranda"
-      url: "/"
-      weight: 10
-    - name: "Coding"
-      url: "/tags/coding/"
-      weight: 20
-    - name: "Blogger"
-      url: "/tags/blogger/"
-      weight: 30
-    - name: "Internet"
-      url: "/tags/internet/"
-      weight: 40
-    - name: "Lifestyle"
-      url: "/tags/lifestyle/"
-      weight: 50
-    - name: "Informasi"
-      url: "/tags/informasi/"
-      weight: 60
+  - name: "Beranda"
+    url: "/"
+    weight: 10
+  - name: "Coding"
+    url: "/tags/coding"
+    weight: 20
+  - name: "Blogger"
+    url: "/tags/blogger"
+    weight: 30
+  - name: "Internet"
+    url: "/tags/internet"
+    weight: 40
+  - name: "Lifestyle"
+    url: "/tags/lifestyle"
+    weight: 50
+  - name: "Informasi"
+    url: "/tags/informasi"
+    weight: 60
 
-# === BLOK PARAMS UTAMA (Semua setting digabungkan di sini) ===
+# Parameter Situs
 params:
-  # Setting 1: FIX FINAL DisQus Shortname
-  disqusShortname: "deuxly" # GANTI dengan Shortname Anda yang benar
-  
-  # Setting 2: Menentukan folder 'post' sebagai konten utama
-  mainSections:
-    - post
-  # === TIDAK ADA BLOK 'params:' LAIN DI BAWAH INI ===
+  author: "deuxly"
+  description: "Teknologi Terbaru? Blogging Sukses? Tutorial Skill Baru? Jawabannya adalah deuxly. deuxly membedah dunia digital menjadi panduan lengkap yang mudah!"
+  # Gambar default jika artikel tidak ada gambar
+  defaultImage: "/images/default.jpg"
+  logo: "/images/logo.svg"
 
-  description: "Blogging & Learning" 
-  logo_url: "/images/logo.svg"
+  # KONFIGURASI PROMO BANNER (DI ATAS RELATED POST)
+  promoBox:
+    enable: true
+    text: "Mahir Excel dalam 7 Hari, Cuma Rp49.300! Beli Sekarang!!"
+    linkText: "Klik untuk melihat detail!"
+    linkUrl: "https://lynk.id/deuxly/jx89m3d4ee5y" # Ganti dengan link produk
+
+  # Konfigurasi Disqus
+services:
+  disqus:
+    shortname: "deuxly" # Ganti dengan username Disqus Anda
+    enableRobotsTXT: true

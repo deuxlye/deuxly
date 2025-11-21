@@ -1,0 +1,94 @@
+{{ define "main" }}
+
+<div class='breadcrumb'>
+    <ul itemscope='itemscope' itemtype='https://schema.org/BreadcrumbList'>
+        <li itemprop='itemListElement' itemscope='itemscope' itemtype='https://schema.org/ListItem'>
+            <a class='bread-home' href='{{ .Site.BaseURL }}' itemprop='item' title='Home'>
+                <span itemprop='name'>Beranda</span>
+            </a>
+            <meta content='1' itemprop='position'/>
+        </li>
+        <li itemprop='itemListElement' itemscope='itemscope' itemtype='https://schema.org/ListItem'>
+            <span itemprop='name'>{{ .Title }}</span>
+            <meta content='2' itemprop='position'/>
+        </li>
+    </ul>
+</div>
+
+<div class="archive-header">
+    <div class="archive-info">
+        <span class="archive-type">Label</span>
+        <h1 class="archive-title">{{ .Title }}</h1>
+    </div>
+    <div class="archive-count">
+        <span>{{ len .Pages }} Artikel</span>
+    </div>
+</div>
+
+<div class='main' role='main'>
+    
+    <div class='layout f'>
+        <div class='widget-judul f'>Arsip Blog</div>
+        <div class='layout-pilih f'>
+            <input class='h' id='layout' type='checkbox'/>
+            <div class='layout-label f'>
+                <label class='switch bg-50 round f r' for='layout' title='Layout'>
+                    <span class='grid f'>
+                        <svg viewBox='0 0 24 24'><path d='M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z'></path><path d='M12 2V22'></path><path d='M2 12H22'></path></svg>
+                    </span>
+                    <span class='list f'>
+                        <svg viewBox='0 0 24 24'><path d='M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z'></path><path d='M12 2V22'></path></svg>
+                    </span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class='blog-posts hfeed g'>
+        {{ range .Paginator.Pages }}
+        <article class='post-artikel artikel hentry'>
+            <div class='post-bungkus f'>
+                <div class='post-isi g'>
+                    <div class='post-gambar gambar'>
+                        <a href='{{ .Permalink }}' title='{{ .Title }}'>
+                            {{ if .Params.image }}
+                            <img alt='{{ .Title }}' src='{{ .Params.image }}' width='300' height='225' loading="lazy"/>
+                            {{ else }}
+                            <svg class="no-img-placeholder" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+                            {{ end }}
+                        </a>
+                    </div>
+                    
+                    <h2 class='entry-title'>
+                        <a href='{{ .Permalink }}' title='{{ .Title }}'>{{ .Title }}</a>
+                    </h2>
+                    
+                    <div class='entry-content snippet h'>
+                        {{ .Summary | truncate 120 }}
+                    </div>
+                    
+                    <div class='post-info f'>
+                        <span class='post-label f'>
+                            {{ with .Params.tags }}
+                                <a href="{{ "/tags/" | relURL }}{{ index . 0 | urlize }}">{{ index . 0 }}</a>
+                            {{ end }}
+                        </span>
+                        <span class='post-timestamp h'>{{ .Date.Format "02 Jan 2006" }}</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+        {{ end }}
+    </div>
+
+    <div class='halaman f r'>
+        {{ if .Paginator.HasPrev }}
+        <a class='halaman-tautan btn-aksen f' href='{{ .Paginator.Prev.URL }}'>Previous</a>
+        {{ end }}
+        {{ if .Paginator.HasNext }}
+        <a class='halaman-tautan btn-aksen f' href='{{ .Paginator.Next.URL }}'>Next</a>
+        {{ end }}
+    </div>
+</div>
+
+{{ end }}

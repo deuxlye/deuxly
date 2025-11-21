@@ -1,0 +1,7 @@
+<figure class="gambar-watermark">
+    <img src="{{ .Get "src" }}" alt="{{ .Get "alt" }}">
+    <span class="watermark-text">{{ .Site.Title | lower }}.com</span>
+    {{ if .Get "caption" }}
+        <figcaption>{{ .Get "caption" }}</figcaption>
+    {{ end }}
+</figure>
