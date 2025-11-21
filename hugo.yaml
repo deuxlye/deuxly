@@ -24,6 +24,7 @@ outputs:
     - HTML
     - RSS
     - JSON # <--- Ini Wajib
+  minify: true
 
 # Konfigurasi Artikel Terkait (Related Posts)
 related:
@@ -85,3 +86,43 @@ enableGitInfo: true
 frontmatter:
   date: ["date", "publishDate", "lastmod"]
   lastmod: ["lastmod", ":git", "date", ":fileModTime"]
+
+  minify:
+  disableCSS: false
+  disableHTML: false
+  disableJS: false
+  disableJSON: false
+  disableSVG: false
+  disableXML: false
+  minifyOutput: false
+  tdewolff:
+    css:
+      inline: false
+      keepCSS2: false
+      precision: 0
+      version: 0
+    html:
+      keepComments: false
+      keepConditionalComments: false
+      keepDefaultAttrVals: true
+      keepDocumentTags: true
+      keepEndTags: true
+      keepQuotes: false
+      keepSpecialComments: true
+      keepWhitespace: false
+      templateDelims:
+      - ''
+      - ''
+    js:
+      keepVarNames: false
+      precision: 0
+      version: 2022
+    json:
+      keepNumbers: false
+      precision: 0
+    svg:
+      inline: false
+      keepComments: false
+      precision: 0
+    xml:
+      keepWhitespace: false
