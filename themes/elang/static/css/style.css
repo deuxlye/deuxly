@@ -1144,3 +1144,29 @@ a.related-item:hover h4.related-title { color: var(--aksen); }
     content: none;
     counter-increment: none;
 }
+
+/* WIDGET LAST UPDATED (UKURAN PAS TEKS) */
+.last-updated {
+    background-color: #27ae60; /* Hijau */
+    color: #ffffff;
+    
+    /* KUNCI: Lebar menyesuaikan isi teks (tidak full) */
+    width: -moz-fit-content;
+    width: fit-content;
+    
+    padding: 8px 15px; /* Padding dikecilkan sedikit biar pas */
+    border-radius: 4px; /* Sudut sedikit melengkung */
+    
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.4;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Support Dark Mode */
+[data-tema="gelap"] .last-updated {
+    background-color: #1e8449; 
+}

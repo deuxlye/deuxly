@@ -55,6 +55,14 @@
         <div class='post-isi'>
             <h1 class='entry-title'>{{ .Title }}</h1>
 
+                <div class='post-info f'></div> 
+
+            {{ if ne .Date .Lastmod }}
+            <div class="last-updated">
+             Terakhir di Update {{ .Lastmod.Format "January 02, 2006" }}
+            </div>
+            {{ end }}
+
             {{ if .Params.image }}
 <div class='post-gambar gambar' style="margin: 1.5rem 0; width: 100%;">
     <img alt='{{ .Title }}' src='{{ .Params.image }}' style="width: 100%; height: auto; display: block; border-radius: 7px;" loading="lazy"/>

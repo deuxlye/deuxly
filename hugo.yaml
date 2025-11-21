@@ -78,3 +78,10 @@ services:
   disqus:
     shortname: "deuxly" # Ganti dengan username Disqus Anda
     enableRobotsTXT: true
+    # Aktifkan informasi Git agar Lastmod otomatis terdeteksi saat di-commit
+enableGitInfo: true
+
+# Prioritas penentuan tanggal update
+frontmatter:
+  date: ["date", "publishDate", "lastmod"]
+  lastmod: ["lastmod", ":git", "date", ":fileModTime"]
