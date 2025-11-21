@@ -10,7 +10,7 @@
     {{ end }}
 </title>
 
-<meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}">
+<meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else if .Params.description }}{{ .Params.description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}">
 <meta name="author" content="{{ .Site.Params.author }}">
 {{ if .Params.tags }}
 <meta name="keywords" content="{{ delimit .Params.tags ", " }}">
@@ -24,7 +24,7 @@
 <meta property="og:site_name" content="{{ .Site.Title }}" />
 <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}" />
 <meta property="og:title" content="{{ .Title }}" />
-<meta property="og:description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}" />
+<meta property="og:description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else if .Params.description }}{{ .Params.description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}" />
 <meta property="og:url" content="{{ .Permalink }}" />
 {{ if .Params.image }}
 <meta property="og:image" content="{{ .Params.image | absURL }}" />
@@ -33,7 +33,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ .Title }}">
-<meta name="twitter:description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}">
+<meta name="twitter:description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else if .Params.description }}{{ .Params.description }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}">
 {{ if .Params.image }}
 <meta name="twitter:image" content="{{ .Params.image | absURL }}">
 {{ end }}
