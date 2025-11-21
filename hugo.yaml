@@ -24,7 +24,6 @@ outputs:
     - HTML
     - RSS
     - JSON # <--- Ini Wajib
-  minify: true
 
 # Konfigurasi Artikel Terkait (Related Posts)
 related:
