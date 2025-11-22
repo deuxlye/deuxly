@@ -77,7 +77,7 @@ params:
   # Konfigurasi Disqus
 services:
   disqus:
-    shortname: "deuxly" # Ganti dengan username Disqus Anda
+    shortname: "" # Ganti dengan username Disqus Anda
     enableRobotsTXT: true
     # Aktifkan informasi Git agar Lastmod otomatis terdeteksi saat di-commit
 enableGitInfo: true
